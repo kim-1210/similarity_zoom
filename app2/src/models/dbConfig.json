@@ -1,0 +1,6 @@
+{
+    "host": "localhost",
+    "user": "node_user",
+    "database": "zoomDB",
+    "password": "12344"
+}

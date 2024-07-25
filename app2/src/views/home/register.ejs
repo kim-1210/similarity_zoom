@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/home/register.css">
+    <script src="/js/home/register.js" defer></script>
+    <title>register</title>
 </head>
 <body>
-    
+    <div class="login_window">
+        <br>
+        <span class="register_text">REGISTER</span>
+        <p id="fail_content">.</p>
+        <br>
+        <input type="text" placeholder="NAME" class="input_text" id="name" style="margin-right: 6%;">
+        <br> <br>
+        <input type="text" placeholder="ID" class="input_text" id="id" style="margin-right: 6%;">
+        <br> <br>
+        <input type="password" id="pw" placeholder="Enter your password" class="input_text" >
+        <span onclick="togglePassword()" id="visibility" style="cursor: pointer;">■</span>
+        <br> <br>
+        <div class="toggle-container" id="genderToggle">
+            <div class="toggle-switch"></div>
+            <div class="toggle-label left">남</div>
+            <div class="toggle-label right">여</div>
+        </div>
+        <br> <br>
+        <p style="font-size: 1.2vmin;">Already Account? <a href="/" style="color: rgb(55, 55, 248);">Sign Up</a></p>
+        <button class="register_btn" id="register_btn">REGISTER</button>
+    </div>
 </body>
 </html>

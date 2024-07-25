@@ -12,6 +12,7 @@ router.post('/main', ctrl.show.main);
 router.post('/chat_room', ctrl.show.chat_room);
 
 // FUNC
-
+router.post('/login_check', ctrl.func.login_check);
+router.post('/get_register', ctrl.func.set_user_info);
 
 module.exports = router;

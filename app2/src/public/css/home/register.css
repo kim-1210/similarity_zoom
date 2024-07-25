@@ -1,0 +1,95 @@
+body {
+    padding: 0;
+    border: 0;
+    width: 99%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+div.login_window {
+    border: 1px black solid;
+    width: 400px;
+    height: 700px;
+    margin-top: 100px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(205, 220, 232);
+}
+
+span.register_text {
+    font-size: 3.3vmin;
+    font-weight: bold;
+    font-family: 'HancomMalangMalang';
+}
+
+input.input_text {
+    width: 70%;
+    height: 10%;
+    border-radius: 15px;
+    font-size: 2vmin;
+}
+
+button.register_btn {
+    width: 90%;
+    height: 12%;
+    border-radius: 10px;
+    font-size: 2vmin;
+}
+
+@font-face {
+    font-family: 'HancomMalangMalang-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/HancomMalangMalang-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.toggle-container {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    background-color: #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.toggle-switch {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transition: left 0.3s;
+}
+.toggle-container.active .toggle-switch {
+    left: 60px;
+}
+.toggle-label {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    transition: color 0.3s;
+    font-weight: bold;
+}
+.toggle-label.left {
+    left: 0;
+    color: #2929e9;
+}
+.toggle-container.active .toggle-label.left {
+    color: #2929e9;
+}
+.toggle-label.right {
+    right: 0;
+    color: #ff71f6;
+}
+.toggle-container.active .toggle-label.right {
+    color: #ff71f6;
+}

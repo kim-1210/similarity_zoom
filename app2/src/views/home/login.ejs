@@ -15,9 +15,10 @@
         <span class="login_text">Login</span>
         <p id="fail_content">.</p>
         <br>
-        <input type="text" placeholder="ID" class="input_text" id="id">
+        <input type="text" placeholder="ID" class="input_text" id="id" style="margin-right: 6%;">
         <br> <br>
-        <input type="text" placeholder="PW" class="input_text" id="pw">
+        <input type="password" id="pw" placeholder="Enter your password" class="input_text" >
+        <span onclick="togglePassword()" id="visibility" style="cursor: pointer;">■</span>
         <br>
         <p style="font-size: 1.2vmin;">Don't have Account? <a href="/register" style="color: rgb(55, 55, 248);">register</a></p>
         <button class="login_btn" id="login_btn">Login</button>

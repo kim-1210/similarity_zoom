@@ -22,11 +22,25 @@ function login_check(){
     .then((response) =>{ return response.json()})
     .then((data) =>{
         if(data.result){
-            location.href = "/main";
+            setTimeout(()=>{
+                location.href = "/main";
+            }, 2000);
         }
         else{
             fail_content.innerHTML = data.message;
         }
     })
     .catch((error) => console.log('error : ', error));
+}
+
+
+function togglePassword() {
+    const visibilityIcon = document.querySelector('#visibility');
+    if (pw.type === 'password') {
+        pw.type = 'text';
+        visibilityIcon.textContent = '□'; // 눈 감는 아이콘
+    } else {
+        pw.type = 'password';
+        visibilityIcon.textContent = '■'; // 눈 뜨는 아이콘
+    }
 }
