@@ -1,0 +1,45 @@
+body {
+    padding: 0;
+    border: 0;
+    width: 99%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+div.login_window {
+    border: 1px black solid;
+    width: 400px;
+    height: 400px;
+    margin-top: 200px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(205, 220, 232);
+}
+
+span.login_text {
+    font-size: 3.3vmin;
+    font-weight: bold;
+    font-family: 'HancomMalangMalang';
+}
+
+input.input_text {
+    width: 70%;
+    height: 10%;
+    border-radius: 15px;
+    font-size: 2vmin;
+}
+
+button.login_btn {
+    width: 90%;
+    height: 12%;
+    border-radius: 10px;
+    font-size: 2vmin;
+}
+
+@font-face {
+    font-family: 'HancomMalangMalang-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/HancomMalangMalang-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
