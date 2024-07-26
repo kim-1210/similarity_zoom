@@ -14,11 +14,47 @@
         <h1 style="float: right; margin-right: 2%;">Similarity Zoom</h1>
         <span style="float: left; margin-left: 2%; margin-top: 2%; font-weight: bold;">By. KimDaeYoung</span>
     </div>
-    <div class="left">내 정보</div>
+    <div class="left">
+        <p style="border-bottom: 1px black solid; font-weight: bold; padding-bottom: 8%; font-size: 2.2vmin;">내 정보</p>
+        <img style="width: 80%; height: 20%;" id="gender_img">
+        <br>
+        <span id="gender_span"> GD : </span>
+        <br>
+        <span> NICKNAME : </span>
+        <br>
+        <span style="font-weight: bold;" id="nickname_span"></span>
+        <br>
+        <span> ID :</span>
+        <br>
+        <span style="font-weight: bold;" id="id_span"></span>
+        <br> <br>
+        <button onclick="login_go()">로그아웃</button>
+        <p style="border-bottom: 1px black solid;"></p>
+    </div>
     <div class="right">
-        <div>
-
+        <div style="width: 70%; height: 100%; border-radius: 10px; border: 1px black solid;" >
+            <div style="width: 100%; height: 12%; border-bottom: 1px black solid;">
+                <div class="categories">
+                    <img class="categories" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACp0lEQVR4nO2YzW7UMBSFvxap3bSo/EswsAIEz8AGeAEor8HPFrEDpIo9PENBVTUVoi0bWDFCdCT+drClol1AoTRlyTTI4qSyoonjJu7MpORIV4rt6+tznOs4NtSoUaNGjX9oALNAJGsCZ6igiB9AnDJTd4IKYVbE50Xc2ILqZqqUFpFI27N/UnW/esWjESAtNtSnUUJIoyyPEGnRlP+CCBlbVJ2J3xMeUYC0OAusZczmac8YUVkeIdICEZhRvA3NsK+IIDxCpEUINMvyKJsWo8BNYAn4bfU3z2+AG8BID3iUSgvT72OXwdP2Hjjeg/QshFFLxCfgCjButZvnq8Bn+bzzfDOlYG9EZiamgaM5fW5ZIiYcfhOWmOs5MY8BT8Qh2Ib4BTjg6NeWn3kTebgmX7NmsnAQWA65IRphL1X30NFvUz52OmVhv3zNLGfhkXxehNwQz6vOzFAWkhnzRZ7/strPFd1HsgbIGzi0kHinPNqpXK2akHbCP90wyEKGVLfVzS/dYUvloZzALY+Nb6fW2itCXvVDyG4j7jLesOo6/5WQjsrDGYFtC3HNY/5y56z9K05ZcCGuNbFW8JrHiPjpuWYM9qn+Dx5CkjOADzH7sFPkmmcu9TvkM16sn8gE2/yTVzqmhmmVF1PHzCwUOQa7fodc4zxPnRDHbWEfVLioRkP+e4Bvvg/S/V57jPvNmuDL1tmG+yo8tQKeAh4DqzlBQwuJHbaqbDFvJsG82u6awhHrxuJ2SQKhhPjgjnzXgUP2QSf5Wj0DLllrZpCEjCmdkjfR6XaQm9SCLbImdktIy8Fn3XUaPQzc0+LZdHzT+yUkAt5qTWynUxkMwhoJgj0jZEUDXpCZ5699jFMYD7osvqk+ximMEZFY0QxOFbw1DBWnRo0aNagW/gJrHy0wJvsauQAAAABJRU5ErkJggg==">
+                    <br>
+                    <span>채널 목록</span>
+                </div>
+                <div class="categories">
+                    <img class="categories" src="data:image/png;base64,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">
+                    <br>
+                    <span>찾기</span>
+                </div>
+            </div>
+            <div style="width: 100%; height: 88%; overflow-y: auto; text-align: center;">
+                <div class="contain">
+                    <div class="title"><span class="channel_category">TITLE</span></div>
+                    <div class="id"><span class="channel_category">ID</span></div>
+                    <div class="pw"><span class="channel_category">비번<br>유무</span></div>
+                    <div class="num_per"><span class="channel_category">인원수</span></div>
+                </div>
+            </div>
         </div>
+        
     </div>
     <div class="bottom">tel. 010-2XX2-64XX or 광고</div>
     <div class="modal" >
@@ -33,7 +69,7 @@
             <input type="checkbox" id="check_pw" checked><span>사용</span>
         </div>
         <br> <br>
-        <button class="room_btn">생성</button>
+        <button class="room_btn" id="create_room_btn">생성</button>
     </div>
     <button class="create_room" id="create_btn"><span class="btn_font" id="label_btn">+</span></button>
 </body>

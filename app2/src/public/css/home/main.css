@@ -19,6 +19,7 @@ div.left {
     width: 10%;
     height: 80%;
     position: relative;
+    text-align: center;
 }
 
 div.left::after {
@@ -76,7 +77,8 @@ div.bottom {
     border-radius: 20px;
 }
 
-.create_room:hover, .room_btn:hover {
+.create_room:hover,
+.room_btn:hover {
     background-color: #0056b3;
 }
 
@@ -100,6 +102,59 @@ div.bottom {
     width: 30%;
     height: 13%;
     cursor: pointer;
+}
+
+img.categories {
+    width: 50%;
+    height: 70%;
+}
+
+div.categories {
+    height: 100%;
+    width: 8%;
+    border-right: 1px black solid;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+}
+
+span.channel_category {
+    position: relative;
+    top: 30%;
+    font-weight: bold;
+}
+
+div.contain {
+    width: 100%;
+    height: 10%;
+    border: 1px black solid;
+}
+
+div.title {
+    height: 100%;
+    width: 70%;
+    float: left;
+    border-right: 1px black solid;
+}
+
+div.id {
+    height: 100%;
+    width: 11%;
+    float: left;
+    border-right: 1px black solid;
+}
+
+div.pw {
+    height: 100%;
+    width: 9%;
+    float: left;
+    border-right: 1px black solid;
+}
+
+div.num_per {
+    height: 100%;
+    width: 9%;
+    float: left;
 }
 
 @font-face {

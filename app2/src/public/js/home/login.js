@@ -24,7 +24,7 @@ function login_check(){
         if(data.result){
             setTimeout(()=>{
                 location.href = `/main/${id.value}/${data.nickname}/${data.gender}`;
-            }, 2000);
+            }, 500);
         }
         else{
             fail_content.innerHTML = data.message;
