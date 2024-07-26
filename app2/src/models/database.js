@@ -16,8 +16,8 @@ class user_info {
             connect.query(`SELECT * FROM user_info WHERE ID = ?`, [id], async (error, rows) => {
                 if (error) {return reject(error);}
                 if (rows.length > 0) {
-                    const match = await bcrypt.compare(pw, rows[0].pw);
-                    if (match) {
+                    //const match = await bcrypt.compare(pw, rows[0].pw);
+                    if (rows[0].pw == pw) {
                         return resolve(rows);
                     }
                 }
@@ -29,9 +29,9 @@ class user_info {
     static async set_user_info(body) { //회원가입은 id / pw / name / gender
         return new Promise(async (resolve, reject) => {
             const { id, pw, name, gender } = body;
-            const hashedPassword = await bcrypt.hash(pw, 10);
+            //const hashedPassword = await bcrypt.hash(pw, 10);
             connect.query(`INSERT INTO user_info (id, pw, name, gender) VALUES (?, ?, ?, ?)`,
-                [id, hashedPassword, name, gender], (error, result) => {
+                [id, pw, name, gender], (error, result) => {
                     if (error) {return reject(error);}
                     return resolve({ result: true, message: '회원가입 되셨습니다.' });
                 });

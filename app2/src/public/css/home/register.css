@@ -35,6 +35,7 @@ button.register_btn {
     height: 12%;
     border-radius: 10px;
     font-size: 2vmin;
+    cursor: pointer;
 }
 
 @font-face {

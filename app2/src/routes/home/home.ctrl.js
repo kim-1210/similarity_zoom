@@ -22,7 +22,7 @@ const func = {
         try {
             const rows = await user_info.get_login(req.body);
             if (rows.length > 0) {
-                return res.json({ result: true });
+                return res.json({ result: true, nickname : rows[0].name, gender : rows[0].gender });
             } else {
                 return res.json({ result: false, message : '로그인에 실패했습니다.' });
             }

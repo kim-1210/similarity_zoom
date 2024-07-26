@@ -8,8 +8,8 @@ const ctrl = require('./home.ctrl');
 router.get('/', ctrl.show.login);
 router.get('/register', ctrl.show.register);
 
-router.post('/main', ctrl.show.main);
-router.post('/chat_room', ctrl.show.chat_room);
+router.get('/main/:id/:name/:gender', ctrl.show.main);
+router.get('/chat_room', ctrl.show.chat_room);
 
 // FUNC
 router.post('/login_check', ctrl.func.login_check);

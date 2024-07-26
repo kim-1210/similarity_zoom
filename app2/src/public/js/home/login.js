@@ -23,7 +23,7 @@ function login_check(){
     .then((data) =>{
         if(data.result){
             setTimeout(()=>{
-                location.href = "/main";
+                location.href = `/main/${id.value}/${data.nickname}/${data.gender}`;
             }, 2000);
         }
         else{
