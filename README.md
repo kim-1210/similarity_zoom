@@ -20,6 +20,7 @@
     - 로비 창 구현 (80%)
         - 방 만들기
         ![alt text](image-1.png)
+        ![alt text](image-3.png)
 - 백엔드
     - 회원가입 버튼 기능 추가
     - 데이터베이스 설계 (user_info)
