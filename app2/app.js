@@ -3,6 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const http = require('http');
 const app = express();
 
 app.use(express.json());
@@ -19,4 +20,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.static(`${__dirname}/src/public`));
 
-module.exports = app;
+var server = http.createServer(app);
+
+module.exports = server;

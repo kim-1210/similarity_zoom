@@ -125,6 +125,7 @@ span.channel_category {
 }
 
 div.contain {
+    cursor: pointer;
     width: 100%;
     height: 10%;
     border: 1px black solid;

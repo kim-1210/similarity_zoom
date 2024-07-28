@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/home/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" crossorigin="anonymous" defer></script>
     <script src="/js/home/main.js" defer></script>
     <title>main</title>
 </head>
@@ -45,13 +46,13 @@
                     <span>찾기</span>
                 </div>
             </div>
-            <div style="width: 100%; height: 88%; overflow-y: auto; text-align: center;">
-                <div class="contain">
-                    <div class="title"><span class="channel_category">TITLE</span></div>
-                    <div class="id"><span class="channel_category">ID</span></div>
-                    <div class="pw"><span class="channel_category">비번<br>유무</span></div>
-                    <div class="num_per"><span class="channel_category">인원수</span></div>
-                </div>
+            <div style="width: 100; height: 10%; text-align: center; border-bottom: 1px black solid;">
+                <div class="title"><span class="channel_category">TITLE</span></div>
+                <div class="id"><span class="channel_category">ID</span></div>
+                <div class="pw"><span class="channel_category">비번<br>유무</span></div>
+                <div class="num_per"><span class="channel_category">인원수</span></div>
+            </div>
+            <div style="width: 100%; height: 88%; overflow-y: auto; text-align: center;" id="chat_room_list">
             </div>
         </div>
         
@@ -59,12 +60,12 @@
     <div class="bottom">tel. 010-2XX2-64XX or 광고</div>
     <div class="modal" >
         <p style="font-size: 1.7vmin; font-weight: bold;">방 생성</p>
-        <input type="text" placeholder="방이름" class="room_text">
+        <input type="text" placeholder="방이름" class="room_text" id="room_title">
         <br> <br>
         <span style="position: relative; font-size: 1.6vmin; top: 3%;">인원 수 </span>
         <input type="number" placeholder="인원 수 (2~10)" class="room_text" style="font-size: 1.6vmin; font-weight: bold; float: right; width: 30%; margin-right: 30%;" id="person_number" value="2">
         <br> <br>
-        <input id="n_pw" type="password" placeholder="비밀번호 (숫자만 가능)" class="room_text">
+        <input id="n_pw" type="password" placeholder="비밀번호 (숫자만 가능)" class="room_text" itemid="room_pw">
         <div style="font-size: 1.3vmin; float: left; width: 100%;">
             <input type="checkbox" id="check_pw" checked><span>사용</span>
         </div>
@@ -73,5 +74,4 @@
     </div>
     <button class="create_room" id="create_btn"><span class="btn_font" id="label_btn">+</span></button>
 </body>
-
 </html>

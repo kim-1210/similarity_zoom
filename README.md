@@ -29,3 +29,8 @@
 ---------------------------------------------
 
 ## 3차
+- 백엔드
+    - 방 생성 기능을 제작
+        - socket으로 webRTC제작으로 방 생성
+            - A : ![alt text](image-4.png) => ![alt text](image-5.png)
+            - B : ![alt text](image-6.png)
