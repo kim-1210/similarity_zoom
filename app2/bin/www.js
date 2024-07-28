@@ -35,6 +35,7 @@ io.on('connection', (socket) => {
 
     socket.on('join', (room) => { //room 변수는 딕셔너리 처리 {id, person_max}
         if (roomCounts[room['id']] === undefined) {
+            console.log('방만들기')
             roomCounts[room['id']] = 1;
             room_max[room['id']] = room['max'];
             titles[room['id']] = room['title'];

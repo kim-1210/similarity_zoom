@@ -34,3 +34,9 @@
         - socket으로 webRTC제작으로 방 생성
             - A : ![alt text](image-4.png) => ![alt text](image-5.png)
             - B : ![alt text](image-6.png)
+        - 상대방에게 방 목록이 남으며, 현 인원수 와 최대 인원수 진입까지 구현
+
+
+# 해야할거 
+## main 창 : list 클릭시 진입 (방장 X)
+## chat 방 : socket 제작 및 영상통화 가능 시스템 제작

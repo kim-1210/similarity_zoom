@@ -89,7 +89,9 @@ function create_room_func() {
     const socket_room = io.connect(`http://localhost:8080?room_id=${id}`);
     socket_room.emit("join", send_data); //접속 시도
     var room_title = document.querySelector('#room_title').value;
-    //location.href = `/chat_room/${id}/${room_title}`;
+    //id pw title 
+    localStorage.setItem(`room_info_${id}`, JSON.stringify({nickname : nickname, pw : pw, title : room_title, max_per : document.querySelector('#person_number').value}))
+    location.href = `/chat_room/${id}`;
 }
 
 function createChannelElement(title, id, password, in_count, max_count) { //채널방 목록 객체화
