@@ -8,7 +8,6 @@ var socket_list = io();
 socket_list.on('chat_list', (data) => {
     chat_room_list.innerHTML = "";
     const { id_list, title_list, pw_list, in_per, max_per } = data;
-    console.log('값을 받음 : ' + id_list.length);
     for (let i = 0; i < id_list.length; i++) {
         chat_room_list.appendChild(createChannelElement(title_list[i], id_list[i], pw_list[i], in_per[i], max_per[i]));
     }
@@ -83,17 +82,17 @@ function create_room_func() {
     }
     const send_data = {
         id : id,
-        room_id: id,
+        room_id: id + '_room',
         max: document.querySelector('#person_number').value,
         title: document.querySelector('#room_title').value,
         pw: pw
     }
-    const socket_room = io.connect(`http://localhost:8080?room_id=${id}`);
+    const socket_room = io.connect(`http://localhost:8080?room_id=${id}_room`);
     socket_room.emit("join", send_data); //접속 시도
     var room_title = document.querySelector('#room_title').value;
     //id pw title 
-    localStorage.setItem(`room_info_${id}`, JSON.stringify({id : id, nickname: nickname, pw: pw, title: room_title, max_per: document.querySelector('#person_number').value, gender : gender }))
-    location.href = `/chat_room/${id}`;
+    localStorage.setItem(`room_info_${id}`, JSON.stringify({nickname: nickname, pw: pw, title: room_title, max_per: document.querySelector('#person_number').value, gender : gender }))
+    location.href = `/chat_room/${id}/${id}`;
 }
 
 function createChannelElement(title, id, password, in_count, max_count) { //채널방 목록 객체화
@@ -150,19 +149,19 @@ function in_room_cli(parentEle) {
     const send_data = {
         send_check : false,
         id : id,
-        room_id: room_id,
+        room_id: room_id + '_room',
         max: max_per,
         title: room_title,
         pw: room_pw
     }
-    const socket_room = io.connect(`http://localhost:8080?room_id=${room_id}`);
+    const socket_room = io.connect(`http://localhost:8080?room_id=${room_id}_room`);
     socket_room.emit("join", send_data); //접속 시도
     //id pw title 
     socket_room.on('room-full', (data) =>{
         const answer = data;
-        if (answer == room_id) {
-            localStorage.setItem(`room_info_${room_id}`, JSON.stringify({id : id, nickname: nickname, pw: room_pw, title: room_title, max_per: max_per, gender: gender }))
-            location.href = `/chat_room/${room_id}`;
+        if (answer == room_id+'_room') {
+            localStorage.setItem(`room_info_${id}`, JSON.stringify({nickname: nickname, pw: room_pw, title: room_title, max_per: max_per, gender: gender }))
+            location.href = `/chat_room/${room_id}/${id}`;
         }
     })
 }
