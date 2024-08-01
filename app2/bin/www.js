@@ -11,10 +11,6 @@ function onListening() {
     console.log(`connect!!! ${PORT}`)
 }
 
-// app.listen(PORT, ()=>{
-//     console.log(`connect!!! ${PORT}`)
-// }); 
-
 var io = socketIO(server);
 
 const room_max = {},
@@ -35,35 +31,43 @@ io.on('connection', (socket) => {
 
     socket.on('join', (room) => { //room 변수는 딕셔너리 처리 {id, person_max}
         if (roomCounts[room['id']] === undefined) {
-            console.log('방만들기')
             roomCounts[room['id']] = 1;
             room_max[room['id']] = room['max'];
             titles[room['id']] = room['title'];
             pws[room['id']] = room['pw'];
-            console.log(room['id'], roomCounts[room['id']], room_max[room['id']], )
         }
         else if (roomCounts[room['id']] < room_max[room['id']]) {
             roomCounts[room['id']]++;
+            socket.emit('room-full', room['id']);
         }
         else {
-            socket.emit('room-full', room['id']);
-            console.log("room full" + roomCounts[room['id']]);
+            socket.emit('room-full', '');
             return;
         }
         socket.join(room['id']);
+
         socket.on('disconnect', () => {
             roomCounts[room['id']]--;
-            if(roomCounts[room['id']] == 0){
-                delete roomCounts[room['id']],
-                room_max[room['id']],
-                titles[room['id']],
-                pws[room['id']];
+            if (roomCounts[room['id']] == 0) {
+                delete roomCounts[room['id']];
+                delete room_max[room['id']];
+                delete titles[room['id']];
+                delete pws[room['id']];
+                console.log('id_list2 : ' + Object.keys(roomCounts));
             }
-            console.log("disconnect, count:" + roomCounts[room['id']]);
         });
+
+        socket.on('leaving', (data) => {
+            const id = data['id'];
+            if (roomCounts[id] !== undefined) {
+                kicked(id);
+            }
+        })
     });
 
-    //1:1에서는 id를 보낼 필요가 없지만 1:N에서는 어떤 유저에서 데이터를 전달할지 알아야함
+    function kicked(id) {
+        io.to(id).emit('kickedFromRoom');
+    }
 
     // socket.on("offer", data => { //클라가 새로운 연결 요청을 보낼때
     //     socket.to(data.offerReceiveID).emit("getOffer", {

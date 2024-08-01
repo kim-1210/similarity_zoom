@@ -5,6 +5,16 @@ const [_, id, nickname, gender] = pathSegments;
 const chat_room_list = document.querySelector('#chat_room_list');
 var socket_list = io();
 
+socket_list.emit('get_chat_list');
+socket_list.on('chat_list', (data) => {
+    chat_room_list.innerHTML = "";
+    const { id_list, title_list, pw_list, in_per, max_per } = data;
+    console.log('값을 받음 : ' + id_list.length);
+    for (let i = 0; i < id_list.length; i++) {
+        chat_room_list.appendChild(createChannelElement(title_list[i], id_list[i], pw_list[i], in_per[i], max_per[i]));
+    }
+})
+
 setInterval(() => {
     socket_list.emit('get_chat_list');
     socket_list.on('chat_list', (data) => {
@@ -77,7 +87,7 @@ create_room_btn.addEventListener('click', create_room_func);
 
 function create_room_func() {
     var pw = document.querySelector('#n_pw').value;
-    if(pw.length <= 0){
+    if (pw.length <= 0) {
         pw = '';
     }
     const send_data = {
@@ -90,7 +100,7 @@ function create_room_func() {
     socket_room.emit("join", send_data); //접속 시도
     var room_title = document.querySelector('#room_title').value;
     //id pw title 
-    localStorage.setItem(`room_info_${id}`, JSON.stringify({nickname : nickname, pw : pw, title : room_title, max_per : document.querySelector('#person_number').value}))
+    localStorage.setItem(`room_info_${id}`, JSON.stringify({id : id, nickname: nickname, pw: pw, title: room_title, max_per: document.querySelector('#person_number').value, gender : gender }))
     location.href = `/chat_room/${id}`;
 }
 
@@ -128,3 +138,37 @@ function createChannelElement(title, id, password, in_count, max_count) { //채�
 
 
 function login_go() { location.href = '/'; }
+
+document.getElementById('chat_room_list').addEventListener('click', function (event) { //리스트 클릭시 반응
+    // 클릭된 요소를 가져옵니다.
+    const clickedElement = event.target;
+    if (clickedElement && clickedElement.closest('.contain')) {
+        const parentElement = clickedElement.closest('.contain');
+        in_room_cli(parentElement);
+    }
+});
+
+function in_room_cli(parentEle) {
+    const room_title = parentEle.querySelector('.title').querySelector('.channel_category').textContent;
+    const room_id = parentEle.querySelector('.id').querySelector('.channel_category').textContent;
+    const room_pw = parentEle.querySelector('.pw').querySelector('.channel_category').textContent;
+    const parts = parentEle.querySelector('.num_per').querySelector('.channel_category').textContent.split('/');
+    const max_per = parts[1].Number;
+
+    const send_data = {
+        id: room_id,
+        max: max_per,
+        title: room_title,
+        pw: room_pw
+    }
+    const socket_room = io.connect(`http://localhost:8080?room_id=${room_id}`);
+    socket_room.emit("join", send_data); //접속 시도
+    //id pw title 
+    socket_room.on('room-full', (data) =>{
+        const answer = data;
+        if (answer == room_id) {
+            localStorage.setItem(`room_info_${room_id}`, JSON.stringify({id : id, nickname: nickname, pw: room_pw, title: room_title, max_per: max_per, gender: gender }))
+            location.href = `/chat_room/${room_id}`;
+        }
+    })
+}
