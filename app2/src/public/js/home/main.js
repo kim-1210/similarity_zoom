@@ -5,7 +5,6 @@ const [_, id, nickname, gender] = pathSegments;
 const chat_room_list = document.querySelector('#chat_room_list');
 var socket_list = io();
 
-socket_list.emit('get_chat_list');
 socket_list.on('chat_list', (data) => {
     chat_room_list.innerHTML = "";
     const { id_list, title_list, pw_list, in_per, max_per } = data;
@@ -17,14 +16,6 @@ socket_list.on('chat_list', (data) => {
 
 setInterval(() => {
     socket_list.emit('get_chat_list');
-    socket_list.on('chat_list', (data) => {
-        chat_room_list.innerHTML = "";
-        const { id_list, title_list, pw_list, in_per, max_per } = data;
-        console.log('값을 받음 : ' + id_list.length);
-        for (let i = 0; i < id_list.length; i++) {
-            chat_room_list.appendChild(createChannelElement(title_list[i], id_list[i], pw_list[i], in_per[i], max_per[i]));
-        }
-    })
 }, 5000);
 
 if (gender == 0) {
@@ -91,7 +82,8 @@ function create_room_func() {
         pw = '';
     }
     const send_data = {
-        id: id,
+        id : id,
+        room_id: id,
         max: document.querySelector('#person_number').value,
         title: document.querySelector('#room_title').value,
         pw: pw
@@ -156,7 +148,9 @@ function in_room_cli(parentEle) {
     const max_per = parts[1].Number;
 
     const send_data = {
-        id: room_id,
+        send_check : false,
+        id : id,
+        room_id: room_id,
         max: max_per,
         title: room_title,
         pw: room_pw

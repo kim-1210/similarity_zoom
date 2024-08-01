@@ -1,0 +1,82 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+}
+
+div.left {
+    width: 80%;
+    height: 100%;
+    float: left;
+}
+
+div.right {
+    background-color: bisque;
+    float: right;
+    width: 20%;
+    height: 100%;
+}
+
+div.up {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: rgb(43, 43, 43);
+    width: 100%;
+    height: 20%;
+}
+
+div.down {
+    background-color: black;
+    width: 100%;
+    height: 80%;
+}
+
+div.menu {
+    position: fixed;
+    background-color: rgb(59, 59, 59);
+    width: 30%;
+    height: 5%;
+    z-index: 6;
+    bottom: 2%;
+    left: 25%;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+video.main {
+    width: 80%;
+    margin-left: 10%;
+    height: 95%;
+    margin-top: 2.5%;
+}
+
+video.sub {
+    background-color: aqua;
+    width: 15%;
+    height: 100%;
+    margin-left: 2%;
+    margin-right: 2%;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px rgb(0, 0, 0);
+    border-radius: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #616060;
+    border-radius: 5px;
+}
